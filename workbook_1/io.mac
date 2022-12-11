@@ -1,0 +1,15 @@
+%macro write 2 
+    mov eax, sys_write 
+    mov ebx, std_out 
+    mov ecx, %1
+    mov edx, %2 
+    int 0x80 
+%endmacro
+
+%macro read 2  
+    mov eax, sys_read 
+    mov ebx, std_in 
+    mov ecx, %1 
+    mov edx, %2 
+    int 0x80 
+%endmacro
