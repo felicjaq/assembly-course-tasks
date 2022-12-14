@@ -1,0 +1,34 @@
+%macro write 3
+    mov eax, sys_write 
+    mov ebx, %1 
+    mov ecx, %2
+    mov edx, %3 
+    int 0x80 
+%endmacro
+
+%macro read 3  
+    mov eax, sys_read 
+    mov ebx, %1 
+    mov ecx, %2 
+    mov edx, %3 
+    int 0x80 
+%endmacro
+
+%macro open 0-2
+    mov eax, sys_open 
+    pop ebx 
+%if %0 == 0  
+    xor ecx, ecx 
+%endif
+%if %0 == 2 
+    mov ecx, %1 
+    mov edx, %2 
+%endif
+    int 0x80 
+%endmacro
+
+%macro close 1 
+    mov eax, sys_close 
+    mov ebx, %1 
+    int 0x80 
+%endmacro
