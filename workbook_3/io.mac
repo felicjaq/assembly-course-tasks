@@ -1,0 +1,16 @@
+%macro write 3
+    mov eax, SYS_WRITE 
+    mov ebx, %1 
+    mov ecx, %2
+    mov edx, %3 
+    int 0x80 
+%endmacro
+
+%macro read 3  
+    mov eax, SYS_READ 
+    mov ebx, %1 
+    mov ecx, %2 
+    mov edx, %3 
+    int 0x80 
+%endmacro
+
